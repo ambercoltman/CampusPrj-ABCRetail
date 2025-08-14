@@ -1,4 +1,4 @@
-# ABCRetail
+# ABCRetail 🛒💰
 Part 1 of this project is an MVC project that utilizes Azure Tables, Azure Queues, Azure Blob Containers, and Azure File Shares to store a customers information, their order details as well as the product details. Managing the system on the cloud will make their online retail store more scalable and flexibility, allowing them to easily attend to all orders and maintain all their products.
 
 ## ❓How To Download And Run Project 
