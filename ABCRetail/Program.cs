@@ -1,3 +1,6 @@
+
+using ABCRetail.Services;
+
 namespace ABCRetail
 {
     public class Program
@@ -5,10 +8,12 @@ namespace ABCRetail
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-
+            var configuration = builder.Configuration;
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
+            //register tablestorage with configuration
+            builder.Services.AddSingleton(new TableStorage(configuration.GetConnectionString("AzureStorage")));
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
