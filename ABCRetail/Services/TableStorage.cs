@@ -131,30 +131,30 @@ namespace ABCRetail.Services
             await _productTableClient.DeleteEntityAsync(partitionKey, rowKey);
         }
 
-        public async Task AddOrderSummaryAsync(OrderSummary summary)
-        {
-            if (string.IsNullOrEmpty(summary.PartitionKey) || string.IsNullOrEmpty(summary.RowKey))
-            {
-                throw new ArgumentException("PartitionKey and RowKey must be set.");
-            }
-            try
-            {
-                await _orderSummaryTableClient.AddEntityAsync(summary);
-            }
-            catch (RequestFailedException ex)
-            {
-                throw new InvalidOperationException("Error adding entity to Table Storage.", ex);
-            }
-        }
+        //public async Task AddOrderSummaryAsync(OrderSummary summary)
+        //{
+        //    if (string.IsNullOrEmpty(summary.PartitionKey) || string.IsNullOrEmpty(summary.RowKey))
+        //    {
+        //        throw new ArgumentException("PartitionKey and RowKey must be set.");
+        //    }
+        //    try
+        //    {
+        //        await _orderSummaryTableClient.AddEntityAsync(summary);
+        //    }
+        //    catch (RequestFailedException ex)
+        //    {
+        //        throw new InvalidOperationException("Error adding entity to Table Storage.", ex);
+        //    }
+        //}
 
-        public async Task<List<OrderSummary>> GetAllOrderSummaryAsync()
-        {
-            var sum = new List<OrderSummary>();
-            await foreach (var summary in _orderSummaryTableClient.QueryAsync<OrderSummary>())
-            {
-                sum.Add(summary);
-            }
-            return sum;
-        }
+        //public async Task<List<OrderSummary>> GetAllOrderSummaryAsync()
+        //{
+        //    var sum = new List<OrderSummary>();
+        //    await foreach (var summary in _orderSummaryTableClient.QueryAsync<OrderSummary>())
+        //    {
+        //        sum.Add(summary);
+        //    }
+        //    return sum;
+        //}
     }
 }
