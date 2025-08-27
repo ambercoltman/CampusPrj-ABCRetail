@@ -8,10 +8,10 @@ namespace ABCRetail.Models
     {
         [Key]
         public int product_ID { get; set; }
-        public string? Name { get; set; }
+        public string? prodName { get; set; }
         public string? Description { get; set; }
         public string? Price { get; set; }
-        public string? Avaiability { get; set; }
+        public string? Availability { get; set; }
         public string? Image { get; set; }
 
         //ITableEntity implementation

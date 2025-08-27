@@ -1,0 +1,95 @@
+﻿@model IEnumerable<ABCRetail.Models.OrderSummary>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Summary">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.orderSummary_ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PartitionKey)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RowKey)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Timestamp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.custName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.prodName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Orders)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.paymentStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Availability)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.orderSummary_ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PartitionKey)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RowKey)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Timestamp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.custName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.prodName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Orders)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.paymentStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Availability)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

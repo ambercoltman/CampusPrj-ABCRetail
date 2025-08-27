@@ -26,7 +26,7 @@ namespace ABCRetail.Controllers
             if(file != null)
             {
                 using var stream = file.OpenReadStream();
-                var image = await _blobService.UploadAsync(stream, file.Name);
+                var image = await _blobService.UploadAsync(stream, file.FileName);
                 product.Image = image;
             }
 

@@ -8,7 +8,7 @@ namespace ABCRetail.Models
     {
         [Key]
         public int cust_ID { get; set; }
-        public string? name { get; set; }
+        public string? custName { get; set; }
         public string? surname { get; set; }
         public string? email { get; set; }
         public string? phoneNumber { get; set; }

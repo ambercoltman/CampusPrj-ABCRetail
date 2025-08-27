@@ -13,7 +13,7 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.DisplayNameFor(model => model.prodName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Description)
@@ -22,10 +22,13 @@
                 @Html.DisplayNameFor(model => model.Price)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Avaiability)
+                @Html.DisplayNameFor(model => model.Availability)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Image)
+                Image
+            </th>
+            <th>
+                Action
             </th>
             <th></th>
         </tr>
@@ -34,7 +37,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
+                    @Html.DisplayFor(modelItem => item.prodName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
@@ -43,12 +46,12 @@
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Avaiability)
+                @Html.DisplayFor(modelItem => item.Availability)
             </td>
             <td>
                     @if (!string.IsNullOrEmpty(item.Image))
                     {
-                        <img src="@item.Image" alt="@item.Name" style="width:100px;height:auto" />
+                        <img src="@item.Image" alt="@item.prodName" style="width:100px;height:auto" />
                     }
             </td>
             <td>

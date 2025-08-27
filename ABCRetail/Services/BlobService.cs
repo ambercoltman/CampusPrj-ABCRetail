@@ -13,10 +13,10 @@ namespace ABCRetail.Services
             _blobServiceCLient = new BlobServiceClient(connectionString);
         }
 
-        public async Task<string> UploadAsync(Stream fileStream, string Name)
+        public async Task<string> UploadAsync(Stream fileStream, string fileName)
         {
             var containerClient = _blobServiceCLient.GetBlobContainerClient(_containerName);
-            var blobClient = containerClient.GetBlobClient(Name);
+            var blobClient = containerClient.GetBlobClient(fileName);
             await blobClient.UploadAsync(fileStream);
             return blobClient.Uri.ToString();
         }

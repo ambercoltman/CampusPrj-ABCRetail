@@ -10,6 +10,7 @@ namespace ABCRetail.Services
         private readonly TableClient _customerTableClient; //for the customer table
         private readonly TableClient _productTableClient; //for the product table
         private readonly TableClient _orderTableClient; //for the order table
+        private readonly TableClient _orderSummaryTableClient; //for the order table
 
         //will take in the connection string, connecting table to the connection string
         public TableStorage(string connectionString)
@@ -17,6 +18,7 @@ namespace ABCRetail.Services
             _customerTableClient = new TableClient(connectionString, "Customer"); 
             _productTableClient = new TableClient(connectionString, "Product");
             _orderTableClient = new TableClient(connectionString, "Order");
+            _orderSummaryTableClient = new TableClient(connectionString, "OrderSummary");
         }
 
         //getting all the customer async
@@ -67,7 +69,6 @@ namespace ABCRetail.Services
         {
             await _customerTableClient.DeleteEntityAsync(partitionKey, rowKey);
         }
-
 
         public async Task<List<Order>> GetAllOrderAsync() 
         {
@@ -128,6 +129,32 @@ namespace ABCRetail.Services
         public async Task DeleteProductAsync(string partitionKey, string rowKey)
         {
             await _productTableClient.DeleteEntityAsync(partitionKey, rowKey);
+        }
+
+        public async Task AddOrderSummaryAsync(OrderSummary summary)
+        {
+            if (string.IsNullOrEmpty(summary.PartitionKey) || string.IsNullOrEmpty(summary.RowKey))
+            {
+                throw new ArgumentException("PartitionKey and RowKey must be set.");
+            }
+            try
+            {
+                await _orderSummaryTableClient.AddEntityAsync(summary);
+            }
+            catch (RequestFailedException ex)
+            {
+                throw new InvalidOperationException("Error adding entity to Table Storage.", ex);
+            }
+        }
+
+        public async Task<List<OrderSummary>> GetAllOrderSummaryAsync()
+        {
+            var sum = new List<OrderSummary>();
+            await foreach (var summary in _orderSummaryTableClient.QueryAsync<OrderSummary>())
+            {
+                sum.Add(summary);
+            }
+            return sum;
         }
     }
 }
