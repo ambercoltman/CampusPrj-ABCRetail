@@ -46,7 +46,10 @@
                 @Html.DisplayFor(modelItem => item.Avaiability)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Image)
+                    @if (!string.IsNullOrEmpty(item.Image))
+                    {
+                        <img src="@item.Image" alt="@item.Name" style="width:100px;height:auto" />
+                    }
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
@@ -54,6 +57,7 @@
                     <form asp-action="DeleteProduct" method="post" style="display:inline;">
                         <input type="hidden" name="partitionKey" value="@item.PartitionKey" />
                         <input type="hidden" name="rowKey" value="@item.RowKey" />
+                        <input type="hidden" name="Image" value="@item.Image" />
                         <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this product?');">Delete</button>
                     </form>
             </td>

@@ -14,6 +14,10 @@ namespace ABCRetail
 
             //register tablestorage with configuration
             builder.Services.AddSingleton(new TableStorage(configuration.GetConnectionString("AzureStorage")));
+
+            //register blobservice with configuration
+            builder.Services.AddSingleton(new BlobService(configuration.GetConnectionString("AzureStorage")));
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
