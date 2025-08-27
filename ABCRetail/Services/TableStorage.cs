@@ -8,14 +8,14 @@ namespace ABCRetail.Services
     {
         //keeping track of tables going to connect to
         private readonly TableClient _customerTableClient; //for the customer table
-       // public readonly TableClient _productTableClient; //for the product table
-        public readonly TableClient _orderTableClient; //for the order table
+        private readonly TableClient _productTableClient; //for the product table
+        private readonly TableClient _orderTableClient; //for the order table
 
         //will take in the connection string, connecting table to the connection string
         public TableStorage(string connectionString)
         {
             _customerTableClient = new TableClient(connectionString, "Customer"); 
-           // _productTableClient = new TableClient(connectionString, "Product");
+            _productTableClient = new TableClient(connectionString, "Product");
             _orderTableClient = new TableClient(connectionString, "Order");
         }
 
@@ -93,6 +93,41 @@ namespace ABCRetail.Services
             {
                 throw new InvalidOperationException("Error adding entity to Table Storage.", ex); 
             }
+        }
+        public async Task DeleteOrderAsync(string partitionKey, string rowKey)
+        {
+            await _orderTableClient.DeleteEntityAsync(partitionKey, rowKey);
+        }
+
+        public async Task<List<Product>> GetAllProductAsync()
+        {
+            var prod = new List<Product>();
+            await foreach (var products in _productTableClient.QueryAsync<Product>())
+            {
+                prod.Add(products);
+            }
+            return prod;
+        }
+
+        public async Task AddProductAsync(Product product)
+        {
+            if (string.IsNullOrEmpty(product.PartitionKey) || string.IsNullOrEmpty(product.RowKey))
+            {
+                throw new ArgumentException("PartitionKey and RowKey must be set.");
+            }
+            try
+            {
+                await _productTableClient.AddEntityAsync(product);
+            }
+            catch (RequestFailedException ex)
+            {
+                throw new InvalidOperationException("Error adding entity to Table Storage.", ex);
+            }
+        }
+
+        public async Task DeleteProductAsync(string partitionKey, string rowKey)
+        {
+            await _productTableClient.DeleteEntityAsync(partitionKey, rowKey);
         }
     }
 }
