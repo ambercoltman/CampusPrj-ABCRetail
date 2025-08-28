@@ -7,14 +7,7 @@
 <h1>Customer Details</h1>
 
 <form method="get" asp-action"Index">
-    <p>
-        <!--Netcode-Hub shows how to use radio buttons and the search button-->
-        @using (Html.BeginForm("Index", "Home", FormMethod.Get)) //ActionMethod : Controller : Method
-        {
-            <b>Search by: </b>
-            @Html.TextBox("search", "", htmlAttributes: new { @class = "w-60 form-control" })
-            <input type="submit" value="Search" class="btn btn-primary" />
-        }
+  <p>
         <a asp-action="AddCustomer" style="color:aliceblue">Create New Customer</a>
     </p>
 </form>
@@ -63,8 +56,6 @@
                 @Html.DisplayFor(modelItem => item.address)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
                 <form asp-action="DeleteCustomer" method="post" style="display:inline;">
                    <input type="hidden" name="partitionKey" value="@item.PartitionKey" />
                    <input type="hidden" name="rowKey" value="@item.RowKey" />

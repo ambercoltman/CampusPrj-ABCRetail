@@ -1,5 +1,7 @@
 
 using ABCRetail.Services;
+using FileShare = ABCRetail.Services.FileShare;
+
 
 namespace ABCRetail
 {
@@ -22,8 +24,15 @@ namespace ABCRetail
             builder.Services.AddSingleton<QueueService>(sp =>
             {
                 var connectionString = configuration.GetConnectionString("AzureStorage");
-                return new QueueService(connectionString, "orderSummary");
+                return new QueueService(connectionString, "orders");
             });
+
+            builder.Services.AddSingleton<FileShare>(sp =>
+            {
+                var connectionString = configuration.GetConnectionString("AzureStorage");
+                return new FileShare(connectionString, "fileshare");
+            });
+           
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
