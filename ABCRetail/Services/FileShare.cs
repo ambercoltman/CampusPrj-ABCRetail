@@ -10,6 +10,7 @@ namespace ABCRetail.Services
         private readonly string _connectionString;
         private readonly string _fileShareName;
 
+        //initializes fileshare with connection string and file share name
        public FileShare(string coonnectionString, string  fileShareName)
         {
             _connectionString = coonnectionString??
@@ -18,6 +19,7 @@ namespace ABCRetail.Services
                 throw new ArgumentNullException(nameof(_fileShareName));
         }
 
+        //uploads a file stream to a directory in azure files
        public async Task UploadFileAsync(string directoryName, string fileName, Stream fileStream)
         {
             try
@@ -39,6 +41,7 @@ namespace ABCRetail.Services
             }
         }
 
+        //downloads the file from the directory in azure files
         public async Task<Stream> DownloadFileAsync(string directoryName, string fileName)
         {
             try
@@ -57,6 +60,7 @@ namespace ABCRetail.Services
 
         }
 
+        //lists all files and lists their details
         public async Task<List<FileModel>> ListFilesAsync(string directoryName)
         {
             var files = new List<FileModel>();
@@ -90,3 +94,5 @@ namespace ABCRetail.Services
         }
     }
 }
+
+////IIEVC School of Computer Science, 2025. CLDV6212. [video online]. Available at: <https://youtube.com/playlist?list=PL480DYS-b_kcZiyuCyHolh6Nad8J_Xnk7&si=W9pUZezCTxlrsDl2> [Accessed 28 August 2025].

@@ -16,6 +16,7 @@ html {
   min-height: 100%;
 }
 
+/*(Tuin, 2025)*/
 @keyframes rotate{
     0%
     {
@@ -26,6 +27,7 @@ html {
         transform: rotate(360deg);
     }
 }
+/*(Tuin, 2025)*/
 .gradient{
     --size: 750px;
     --speed: 50s;
@@ -38,12 +40,14 @@ html {
     animation: rotate var(--speed)var(--easing)alternate infinite;
 }
 
+/*(Tuin, 2025)*/
 @media(min-width:720px) {
     .gradient {
         --size: 500px;
     }
 }
 
+/*(Tuin, 2025)*/
 body {
     color: white;
     background-color: #071c39;
@@ -56,21 +60,24 @@ body {
     margin-bottom: 60px;
 }
 
+/*(Tuin, 2025)*/
 * {
     transition: all 0.5s ease-out;
 }
+/*(Ansio,2025)*/
 .homepage {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50);
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
     align-items: center;
     justify-content: center;
     min-height: 100vh;
     text-align: center;
 }
+/*(w3schools, 2025)*/
 .homepage-buttons {
     display: flex;
     gap: 20px;
@@ -78,6 +85,8 @@ body {
     margin-top: 20px
 }
 
+/*(Ansio,2025)*/
+/*(w3schools, 2025)*/
 .homepage .btn {
     color: white;
     margin: 10px;
@@ -91,6 +100,8 @@ body {
     cursor: pointer;
 }
 
+/*(Ansio,2025)*/
+/*(w3schools, 2025)*/
 .btn {
     color: white;
     margin: 5px;
@@ -103,9 +114,13 @@ body {
     border-radius: 10px;
     cursor: pointer;
 }
+/*(Ansio,2025)*/
 .container{
     display: grid;
     grid-template-columns: auto auto auto auto;
 }
 
+/*Ansio, C. 2025. Card interaction. [online]. Available at:<https://codepen.io/carmenansio/pen/myyWKoG> [Accessed 28 August 2025].*/
+/*Tuin van der. W, 2025. Wil van der Tuin on CodePen. [online] Available at: <https://codepen.io/wilvander/pen/KKQrGgP> [Accessed28 August 2025]. */
+/*w3schools, 2025.  CSS Horizontal Navigation Bar. [online] Available at: <https://www.w3schools.com/css/css_navbar_horizontal.asp> [Accessed 28 August 2025].*/
 

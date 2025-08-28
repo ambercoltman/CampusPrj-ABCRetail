@@ -12,7 +12,7 @@ namespace ABCRetail.Models
         public int cust_ID { get; set; } //FK to order
         [Required(ErrorMessage = "Please select a product.")]
         public int product_ID { get; set; } //FK to product
-        [Required(ErrorMessage = "Please select a date.")]
+        [Required(ErrorMessage = "Please select a date.")] 
         public DateTime Order_Date { get; set; } 
         [Required(ErrorMessage = "Please enter the location.")]
         public string? Order_Location { get; set; }
@@ -26,3 +26,5 @@ namespace ABCRetail.Models
         public ETag ETag { get; set; }
     }
 }
+
+////IIEVC School of Computer Science, 2025. CLDV6212. [video online]. Available at: <https://youtube.com/playlist?list=PL480DYS-b_kcZiyuCyHolh6Nad8J_Xnk7&si=W9pUZezCTxlrsDl2> [Accessed 27 August 2025].

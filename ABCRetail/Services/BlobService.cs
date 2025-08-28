@@ -13,6 +13,7 @@ namespace ABCRetail.Services
             _blobServiceCLient = new BlobServiceClient(connectionString);
         }
 
+        //uploads a file stream to azure blob storage and returns the blob's uri
         public async Task<string> UploadAsync(Stream fileStream, string fileName)
         {
             var containerClient = _blobServiceCLient.GetBlobContainerClient(_containerName);
@@ -21,6 +22,7 @@ namespace ABCRetail.Services
             return blobClient.Uri.ToString();
         }
 
+        //deletes a blob from azure blob storage using its uri
         public async Task DeleteBlobAsync(string blobUri)
         {
             Uri u = new Uri(blobUri);
@@ -31,3 +33,5 @@ namespace ABCRetail.Services
         }
     }
 }
+
+////IIEVC School of Computer Science, 2025. CLDV6212. [video online]. Available at: <https://youtube.com/playlist?list=PL480DYS-b_kcZiyuCyHolh6Nad8J_Xnk7&si=W9pUZezCTxlrsDl2> [Accessed 27 August 2025].
