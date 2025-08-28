@@ -55,8 +55,6 @@
                     }
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
                     <form asp-action="DeleteProduct" method="post" style="display:inline;">
                         <input type="hidden" name="partitionKey" value="@item.PartitionKey" />
                         <input type="hidden" name="rowKey" value="@item.RowKey" />

@@ -32,7 +32,16 @@ namespace ABCRetail.Controllers
         {
             return View();
         }
-    
 
+        [HttpPost]
+        public async Task<IActionResult> DeleteCustomer(string partitionKey, string rowKey, Customer cust)
+        {
+            if (cust != null && !string.IsNullOrEmpty(cust.PartitionKey) || cust != null && !string.IsNullOrEmpty(cust.RowKey))
+            {
+                await _tableStorage.DeleteCustomerAsync(partitionKey, rowKey);
+            }
+            await _tableStorage.DeleteCustomerAsync(partitionKey, rowKey);
+            return RedirectToAction("Index");
+        }
     }
 }

@@ -6,9 +6,19 @@
 
 <h1>Customer Details</h1>
 
-<p>
-    <a asp-action="AddCustomer">Create New Customer</a>
-</p>
+<form method="get" asp-action"Index">
+    <p>
+        <!--Netcode-Hub shows how to use radio buttons and the search button-->
+        @using (Html.BeginForm("Index", "Home", FormMethod.Get)) //ActionMethod : Controller : Method
+        {
+            <b>Search by: </b>
+            @Html.TextBox("search", "", htmlAttributes: new { @class = "w-60 form-control" })
+            <input type="submit" value="Search" class="btn btn-primary" />
+        }
+        <a asp-action="AddCustomer">Create New Customer</a>
+    </p>
+</form>
+
 <table class="table">
     <thead>
         <tr>
@@ -26,6 +36,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.address)
+            </th>
+            <th>
+                Action
             </th>
             <th></th>
         </tr>

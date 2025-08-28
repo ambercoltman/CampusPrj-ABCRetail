@@ -15,8 +15,8 @@ namespace ABCRetail.Models
         public string? Image { get; set; }
 
         //ITableEntity implementation
-        public string PartitionKey { get; set; }
-        public string RowKey { get; set; }
+        public string? PartitionKey { get; set; }
+        public string? RowKey { get; set; }
         public DateTimeOffset? Timestamp { get; set; }
         public ETag ETag { get; set; }
     }

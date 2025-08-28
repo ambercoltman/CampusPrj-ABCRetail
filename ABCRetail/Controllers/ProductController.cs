@@ -20,6 +20,13 @@ namespace ABCRetail.Controllers
             var prod = await _tableStorage.GetAllProductAsync();
             return View(prod);
         }
+
+        [HttpGet]
+        public IActionResult AddProduct()
+        {
+            return View();
+        }
+
         [HttpPost]
         public async Task<IActionResult> AddProduct(Product product, IFormFile file)
         {
@@ -38,11 +45,6 @@ namespace ABCRetail.Controllers
                 return RedirectToAction("Index");   
             }
             return View(product);
-        }
-        [HttpGet]
-        public IActionResult AddProduct()
-        {
-            return View();
         }
 
         [HttpPost]

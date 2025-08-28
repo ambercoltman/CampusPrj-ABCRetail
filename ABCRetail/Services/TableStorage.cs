@@ -64,7 +64,7 @@ namespace ABCRetail.Services
         //        throw new InvalidOperationException("Data not found", e);
         //    }
         //}
-        //deleting customer
+        
          public async Task DeleteCustomerAsync(string partitionKey, string rowKey)
         {
             await _customerTableClient.DeleteEntityAsync(partitionKey, rowKey);
