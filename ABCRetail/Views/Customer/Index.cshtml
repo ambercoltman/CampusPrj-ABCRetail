@@ -15,11 +15,11 @@
             @Html.TextBox("search", "", htmlAttributes: new { @class = "w-60 form-control" })
             <input type="submit" value="Search" class="btn btn-primary" />
         }
-        <a asp-action="AddCustomer">Create New Customer</a>
+        <a asp-action="AddCustomer" style="color:aliceblue">Create New Customer</a>
     </p>
 </form>
 
-<table class="table">
+<table class="table" style="color:aliceblue">
     <thead>
         <tr>
             <th>
@@ -44,6 +44,7 @@
         </tr>
     </thead>
     <tbody>
+
 @foreach (var item in Model) {
         <tr>
             <td>

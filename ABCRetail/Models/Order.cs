@@ -8,17 +8,20 @@ namespace ABCRetail.Models
     {
         [Key]
         public int order_ID { get; set; }
-        public string? ordName { get; set; }
-        public string? phoneNumber { get; set; }
-        public string? Address { get; set; }
-        public int? Orders { get; set; }
-        public int? Price { get; set; }
-        public string? paymentMethod { get; set; }
-        public string? paymentStatus { get; set; }
+        [Required(ErrorMessage ="Please select a customer.")]
+        public int cust_ID { get; set; } //FK to order
+        [Required(ErrorMessage = "Please select a product.")]
+        public int product_ID { get; set; } //FK to product
+        [Required(ErrorMessage = "Please select a date.")]
+        public DateTime Order_Date { get; set; } 
+        [Required(ErrorMessage = "Please enter the location.")]
+        public string? Order_Location { get; set; }
+        [Required(ErrorMessage = "Please enter the status.")]
+        public string? Order_Status {get; set;}
 
         //ITableEntity implementation
-        public string PartitionKey { get; set; }
-        public string RowKey { get; set; }
+        public string? PartitionKey { get; set; }
+        public string? RowKey { get; set; }
         public DateTimeOffset? Timestamp { get; set; }
         public ETag ETag { get; set; }
     }
